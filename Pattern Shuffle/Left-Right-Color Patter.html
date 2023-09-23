@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Website</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #content {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #3498db;
+        }
+
+        .color-change {
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .pattern {
+            font-size: 24px;
+            color: white;
+            cursor: context-menu;
+        }
+
+        #patterns {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        .pattern1 {
+            background-color: #e74c3c;
+            width: 50%;
+            height: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .pattern2 {
+            background-color: #2ecc71;
+            width: 50%;
+            height: 50%;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .pattern3 {
+            background-color: #f1c40f;
+            width: 50%;
+            height: 50%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .pattern4 {
+            background-color: #3498db;
+            width: 50%;
+            height: 50%;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="content" class="color-change">Left Click Me</div>
+    <div id="patterns">
+        <div class="pattern1"></div>
+        <div class="pattern2"></div>
+        <div class="pattern3"></div>
+        <div class="pattern4"></div>
+    </div>
+
+    <script>
+        const content = document.getElementById("content");
+        const patterns = document.getElementById("patterns");
+
+        content.addEventListener("mousedown", (e) => {
+            if (e.button === 0) {
+                // Left click
+                content.classList.toggle("color-change");
+            } else if (e.button === 2) {
+                // Right click
+                patterns.style.display = "block";
+            }
+        });
+
+        content.addEventListener("contextmenu", (e) => {
+            e.preventDefault();
+        });
+
+        document.addEventListener("mouseup", () => {
+            patterns.style.display = "none";
+        });
+    </script>
+</body>
+</html>
